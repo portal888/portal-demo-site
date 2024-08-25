@@ -10,7 +10,8 @@ import { globalConfig } from "@/app/template-config"
 const config = {
     style: {
         ...globalConfig.style,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        padding: '5rem 15rem'
     },
     pageConfig: [
         {

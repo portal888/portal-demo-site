@@ -1,17 +1,17 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { AppContext } from '../../../context'
-import Navbar from './Navbar'
 
 const StyledFooter = styled.div`
     background: ${props => props.$image ? props.$image : ( props.$color ? props.$color : '#ecf0f1' )};
-    // height: ${props => props.$height ? props.$height : '3.5rem'};
+    height: ${props => props.$height ? props.$height : '3.5rem'};
 
     display: flex;
     flex-direction: column;
     padding: 0 2.5rem;
     justify-content: center;
-    align-items: start;
+    align-items: center;
+    font-family: monospace;
 `
 
 /**
@@ -25,15 +25,13 @@ const StyledFooter = styled.div`
  */
 const Footer = ({ background, height, pages, showPagesNav }) => {
     const context = useContext(AppContext)
-    const { SiteTitle } = context
     return (
     <StyledFooter
         $background={background}
         $height={height}
         $showPagesNav={showPagesNav}
     >
-        <h3>{ SiteTitle }</h3>
-        { showPagesNav && <Navbar pages={pages} />}
+        <p>Guess what? This site was designed using Portal</p>
     </StyledFooter>
     )
 }

@@ -11,16 +11,21 @@ import styled from 'styled-components'
 
 const StyledHeroSection = styled.div`
     background: ${props => props.$image ? props.$image : ( props.$color ? props.$color : '#000' )};
-    height: ${props => props.$height ? props.$height : '15rem'}
+    height: ${props => props.$height ? props.$height : '15rem'};
+    padding: 5rem 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `
 
-const HeroSection = ({ image, color, height }) => {
+const HeroSection = ({ image, color, height, children }) => {
     return (
         <StyledHeroSection
             $image={image}
             $color={color}
             $height={height}
         >
+            {children}
         </StyledHeroSection>
     )
 }
