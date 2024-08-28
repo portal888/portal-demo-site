@@ -6,6 +6,7 @@ const nextConfig = {
         APP_ENV: process.env.APP_ENV,
         GOOGLE_DRIVE_API_KEY: process.env.GOOGLE_DRIVE_API_KEY
     },
+    output: 'export',
 };
 
 export default nextConfig;
