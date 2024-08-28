@@ -12,6 +12,24 @@ const StyledHeader = styled.div`
     padding: 0 2.5rem;
     justify-content: center;
     align-items: center;
+
+    .buttons {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+
+      a.button, button {
+        background: purple;
+        color: white;
+        margin: .5rem;
+        padding: .25rem .5rem;
+        border-radius: .25rem;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
+    }
 `
 
 /**
@@ -31,7 +49,7 @@ const StyledHeader = styled.div`
  * @param {object} [pages=false] - Pages to be passed to the Navbar component
  * @returns {JSX.Element} Header component
  */
-const Header = ({ background, height, pages, showPagesNav }) => {
+const Header = ({ background, height, pages, showPagesNav, children }) => {
 
     const context = useContext(AppContext)
     const { SiteTitle } = context
@@ -41,8 +59,9 @@ const Header = ({ background, height, pages, showPagesNav }) => {
         $height={height}
         $showPagesNav={showPagesNav}
     >
-        <h1>{ SiteTitle }</h1>
-        { showPagesNav && <Navbar pages={pages} />}
+        {/* <h1>{ SiteTitle }</h1> */}
+        {/* { showPagesNav && <Navbar pages={pages} />} */}
+        {children}
     </StyledHeader>
   )
 }

@@ -58,7 +58,9 @@ const Layout = ({ pages }) => {
                         <Index pages={pages} setCurrentPage={setCurrentPage} />
                 }
             </div>
-            <Footer />
+            <Footer>
+                <p>Guess what? This site was designed using <span style={{color: 'purple'}}>Portal</span> too</p>
+            </Footer>
         </StyledContainer>
     )
 }

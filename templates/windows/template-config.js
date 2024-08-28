@@ -45,7 +45,12 @@ const config = {
             id: 4, 
             pageSlug: 'mattis-rhoncus-urna', 
             position: {x: 60, y: 30},
-        }
+        },
+        {
+            id: 5, 
+            pageSlug: 'mattis-rhoncus-urna', 
+            position: {x: 40, y: 5},
+        },
     ]
 }
 

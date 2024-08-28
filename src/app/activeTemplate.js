@@ -10,6 +10,8 @@ import Notion from '../../templates/notion/page'
 import Windows from '../../templates/windows/page'
 import Starter from '../../templates/starter/page'
 
+import Header from './components/Header'
+
 /**
  * ActiveTemplate component
  * 
@@ -35,8 +37,9 @@ const ActiveTemplate = ({ pages }) => {
     starter: <Starter pages={pages} />
   }
 
-  const defaultTemplateName = 'islands'
+  const defaultTemplateName = 'notion'
   const [activeTemplate, setActiveTemplate] = useState(templates[defaultTemplateName]);
+  const [showDemoButtons, setShowDemoButtons] = useState(false)
 
   // Load the active template from localStorage if it exists
   useEffect(() => {
@@ -53,6 +56,10 @@ const ActiveTemplate = ({ pages }) => {
     if(window && window.location.search !== '') {
       const url = new URL(window.location.href)
       const templateParam = url.searchParams.get('template');
+
+      if(templateParam !== defaultTemplateName){
+        setShowDemoButtons(true)
+      }
       
       if(templates[templateParam]){
         setActiveTemplate(templates[templateParam])
@@ -70,6 +77,17 @@ const ActiveTemplate = ({ pages }) => {
 
   return (
     <>
+      <Header height={'1.5rem'}>
+        {
+          showDemoButtons && 
+            <div className='buttons'>
+              <a href='/?template=notion'>
+                <button>Go back</button>
+              </a>
+              <button>Use this template</button>
+            </div>
+        }
+      </Header>
       {activeTemplate}
     </>
   );
