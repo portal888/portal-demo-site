@@ -8,6 +8,7 @@ export const StyledContainer = styled.div`
 
     .content {
         padding: ${style.padding};
+        text-align: center;
 
         .pages-container {
             margin-top: 2rem;

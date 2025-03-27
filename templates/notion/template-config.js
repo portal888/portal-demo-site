@@ -11,7 +11,7 @@ const config = {
     style: {
         ...globalConfig.style,
         backgroundColor: '#fff',
-        padding: '5rem 15rem'
+        padding: '2.5rem 10rem 5rem 10rem'
     },
     pageConfig: [
         {

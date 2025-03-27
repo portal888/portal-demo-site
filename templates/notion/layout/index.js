@@ -8,13 +8,16 @@ import { StyledPageIcon } from '../style'
 
 import RenderPages from '@/app/(frontend)/utils/renderPages'
 
-import { getCoverImageUrl } from 'utils/utils'
+import usePageImages from '@/app/(frontend)/hooks/usePageImages'
+
 
 const Index = ({ pages, setCurrentPage }) => {
 
     // Get site metadata from React Context
     const context = useContext(AppContext)
-    const { siteTitle, siteDescription } = context
+
+    // Get images for each page
+    const pageImages = usePageImages(pages);
 
     return (
         <>
@@ -27,12 +30,12 @@ const Index = ({ pages, setCurrentPage }) => {
             </div>
 
             <h2 id="templates">Templates</h2>
-            
+
             <div className='pages-container'>
                 {
-                    pages.map((pageData) => {
-                        const pageHeaderImage = getCoverImageUrl(pageData.coverImage)
-                        
+                    pages.map((pageData, index) => {
+                        const pageHeaderImage = pageImages?.[index]?.url || null;
+
                         return <RenderPages
                             openPageViaLink={true}
                             pageSlug={pageData.slug}
