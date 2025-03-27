@@ -1,19 +1,20 @@
 import React, { useContext } from 'react'
 
 import { AppContext } from '../../../context'
-import { getCoverImageUrl } from '../../../utils/utils'
 
-// import { config } from '../template-config'
+import { config } from '../template-config'
 
 import { StyledPageIcon } from '../style'
 
-import RenderPages from '@/app/utils/renderPages'
+import RenderPages from '@/app/(frontend)/utils/renderPages'
+
+import { getCoverImageUrl } from 'utils/utils'
 
 const Index = ({ pages, setCurrentPage }) => {
 
     // Get site metadata from React Context
     const context = useContext(AppContext)
-    const { SiteTitle, SiteDescription } = context
+    const { siteTitle, siteDescription } = context
 
     return (
         <>
@@ -24,11 +25,14 @@ const Index = ({ pages, setCurrentPage }) => {
                 </p>
                 <a href='#templates' className='cta'>Get building</a>
             </div>
+
             <h2 id="templates">Templates</h2>
+            
             <div className='pages-container'>
                 {
                     pages.map((pageData) => {
                         const pageHeaderImage = getCoverImageUrl(pageData.coverImage)
+                        
                         return <RenderPages
                             openPageViaLink={true}
                             pageSlug={pageData.slug}

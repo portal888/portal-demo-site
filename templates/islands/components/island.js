@@ -33,7 +33,7 @@ const Island = ({ pageData }) => {
             $imagePosition={pageData.pageImagePosition}
         >
             <img
-                src={pageData.pageImage.url}
+                src={pageData.pageImage}
                 alt=''
             />
             <p>{pageData.title}</p>

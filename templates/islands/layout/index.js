@@ -1,19 +1,31 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { config } from '../template-config';
 import Island from '../components/island';
 import { findPage, getCoverImageUrl } from '../../../utils/utils';
-import RenderPages from '@/app/utils/renderPages';
+import RenderPages from '@/app/(frontend)/utils/renderPages';
 
 const Index = ({ pages, setCurrentPage }) => {
+
+    const [ pageImages, setPageImages ] = useState([])
+
+    // TODO: Convert to hook to use across templates
+    useEffect(() => {
+        const pageImages = []
+        pages.forEach(page => {
+            pageImages.push(page.coverImage)
+        });
+        setPageImages(pageImages)
+    }, [])
+    
 
     return (
         <>
             {
-                pages.map((pageData) => {
+                pages.map((pageData, index) => {
 
-                    const pageImage = getCoverImageUrl(pageData.coverImage)
+                    const pageImage = pageImages?.[index]?.url || null;
                     const pageImagePosition = findPage(config.pageConfig, pageData.id).coverImage.position
 
                     return <RenderPages
@@ -24,7 +36,7 @@ const Index = ({ pages, setCurrentPage }) => {
                                 currentPage={pageData}
                             >
                                 <Island 
-                                    pageData={{...pageData, pageImage, pageImagePosition}} 
+                                    pageData={{...pageData, pageImage, pageImagePosition}}
                                     setCurrentPage={setCurrentPage}
                                 />
                             </RenderPages>

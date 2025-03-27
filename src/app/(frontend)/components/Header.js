@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { AppContext } from '../../../context'
+import { AppContext } from '../../../../context'
 import Navbar from './Navbar'
 
 const StyledHeader = styled.div`
@@ -52,16 +52,15 @@ const StyledHeader = styled.div`
 const Header = ({ background, height, pages, showPagesNav, children }) => {
 
     const context = useContext(AppContext)
-    const { SiteTitle } = context
+    const { siteTitle } = context
   return (
     <StyledHeader
         $background={background}
         $height={height}
         $showPagesNav={showPagesNav}
     >
-        {/* <h1>{ SiteTitle }</h1> */}
-        {/* { showPagesNav && <Navbar pages={pages} />} */}
-        {children}
+        <h1>{ siteTitle }</h1>
+        { showPagesNav && <Navbar pages={pages} />}
     </StyledHeader>
   )
 }

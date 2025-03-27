@@ -1,20 +1,25 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import { StyledContainer, StyledExplainerSection } from './style'
+import React, { useState, useEffect, useContext } from 'react'
+import { StyledContainer } from './style'
 import { renderCurrentPage } from '../../utils/utils'
 
 // Import root components
-import HeroSection from '@/app/components/heroSection'
-import Footer from '@/app/components/Footer'
+import HeroSection from '@/app/(frontend)/components/HeroSection'
+import Footer from '@/app/(frontend)/components/Footer'
 
 import Index from './layout/index'
 import SinglePage from './layout/single'
+import { AppContext } from '../../context'
 
 const buzzwords = ["baddies", "mavericks", "geniuses", "people", "weirdos"]
 const buzzwordsLength = buzzwords.length
 
 const Layout = ({ pages }) => {
+
+    // Get site metadata from React Context
+    const context = useContext(AppContext)
+    const { siteTitle, siteDescription } = context
 
     const [currentPage, setCurrentPage] = useState(null)
 
@@ -36,16 +41,11 @@ const Layout = ({ pages }) => {
     
     return (
         <StyledContainer>
-            <HeroSection
-                image={'url(/assets/planets/universe.jpeg)'}
-                height='70vh'
-            >
-                <h1 style={{
-                        color: '#fff',
-                        fontSize: '100px'
-                }}>
+            <HeroSection image={'url(/assets/planets/universe.jpeg)'} height='70vh'>
+                <h1 style={{color: '#fff', fontSize: '64px'}}>
                     Digital playgrounds for creative <span>{buzzwords[buzzwordCounter]}</span>
                 </h1>
+                <p style={{color: '#fff'}}>{siteDescription}</p>
             </HeroSection>
             <div className='content'>
                 {

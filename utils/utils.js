@@ -35,6 +35,9 @@ export const renderCurrentPage = (pages) => {
 }
 
 export const getCoverImageUrl = (coverImage) => {
-    return coverImage ? `${process.env.STRAPI_URL}${coverImage.data.attributes.url}` : null
+    if (typeof window === 'undefined' || !coverImage) {
+        return null;
+    }
 
+    return `${window.location.origin}${coverImage.url}`;
 }

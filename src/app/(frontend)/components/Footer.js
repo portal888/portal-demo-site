@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { AppContext } from '../../../context'
+import { AppContext } from '../../../../context'
+import Navbar from './Navbar'
 
 const StyledFooter = styled.div`
     background: ${props => props.$image ? props.$image : ( props.$color ? props.$color : '#ecf0f1' )};
@@ -25,13 +26,15 @@ const StyledFooter = styled.div`
  */
 const Footer = ({ background, height, pages, showPagesNav, children }) => {
     const context = useContext(AppContext)
+    const { siteTitle } = context
     return (
     <StyledFooter
         $background={background}
         $height={height}
         $showPagesNav={showPagesNav}
     >
-        {children}
+        <h3>{ siteTitle }</h3>
+        { showPagesNav && <Navbar pages={pages} />}
     </StyledFooter>
     )
 }

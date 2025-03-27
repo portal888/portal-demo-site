@@ -5,9 +5,10 @@
  * @type {Array} pageConfig - for mapping template designs to site pages
  */
 
-import { globalConfig } from "@/app/template-config"
+import { globalConfig } from "@/app/(frontend)/template-config"
 
 const config = {
+    templateImage: '/assets/image-map/kiefer.png',
     style: {
         ...globalConfig.style,
         hotspotColor: 'crimson',
@@ -43,7 +44,7 @@ const config = {
         },
         {
             id: 5, 
-            pageSlug: 'nulla-facilisi',
+            pageSlug: 'nulla-semptate',
             position: {x: 50, y: 30}
         },
     ]

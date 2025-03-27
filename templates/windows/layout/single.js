@@ -1,8 +1,8 @@
 // Single Page for Windows template
 import React from 'react'
-import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import Window from '../components/window'
-import RenderSinglePageContent from '@/app/utils/renderSinglePageContent'
+import RenderSinglePageContent from '@/app/(frontend)/utils/renderSinglePageContent'
+import RichText from '@/app/(frontend)/utils/richTextRenderer'
 
 const Page = ({ pagePosition, pageData }) => {
 
@@ -10,9 +10,7 @@ const Page = ({ pagePosition, pageData }) => {
     
     return (
         <Window position={pagePosition} title={title}>
-            <RenderSinglePageContent pageData={pageData}>
-                <BlocksRenderer content={body} />            
-            </RenderSinglePageContent>
+            <RenderSinglePageContent pageData={pageData} />
         </Window>
   )
 }
